@@ -1,18 +1,26 @@
 {
-  "name": "xeneta_test",
+  "name": "xeneta",
   "version": "1.0.0",
-  "description": "",
+  "description": "A project utilising Express JS & Postgress SQL for Rates store and convert",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " source .env; node server.js"
+    "start": " source .env; node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bidyashish/Xeneta.git"
+  },
+  "author": "bidyashish",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bidyashish/Xeneta/issues"
+  },
+  "homepage": "https://github.com/bidyashish/Xeneta#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "moment": "^2.29.1",
     "pg": "^8.5.1"
   },
   "devDependencies": {
