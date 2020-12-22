@@ -1,38 +1,15 @@
 const express = require("express");
-const pg = require("pg");
 const bodyParser = require("body-parser");
-const moment = require("moment");
 
-const validateParameters = require("./validateParameters");
-const validateQueryStrings = require("./validateQueryStrings");
+const validateParameters = require("./validation/validateParameters");
+const validateQueryStrings = require("./validation/validateQueryStrings");
 
-const checkCurrency = require("./currency");
+const checkCurrency = require("./validation/currency");
+const queryHandler = require("./db/index")
 
 const app = express();
 app.use(bodyParser.json());
 
-const pool = new pg.Pool({
-  host: "localhost",
-  database: "jojo",
-  user: "ashish",
-  password: "yournewpass",
-  port: "5432",
-
-  // host: process.env.PGHOST,
-  // database: process.env.PGDATABASE,
-  // user: process.env.PGUSER,
-  // password: process.env.PGPASSWORD,
-  // port: process.env.PGPORT
-});
-
-const queryHandler = (req, res, next) => {
-  pool
-    .query(req.sqlQuery)
-    .then((r) => {
-      return res.json(r.rows || []);
-    })
-    .catch(next);
-};
 
 app.get("/", (req, res) => {
   res.send(
@@ -86,25 +63,14 @@ app.post(
     "price",
   ]),
   checkCurrency(),
+
   (req, res, next) => {
-    let numberOfDays = moment(`${req.body.date_to}`).diff(
-      moment(`${req.body.date_from}`),
-      "days"
-    );
-    req.sqlQuery = `
-    DO
-    $do$
-    BEGIN 
-       FOR i IN 1..${numberOfDays} LOOP
-            INSERT INTO prices (orig_code, dest_code, day, price)
-            VALUES ('${req.body.origin_code}' , 
-            '${req.body.destination_code}', 
-            '${moment(req.body.date_from).add(1, "days").format("YYYY-MM-DD")}',
-             ${req.body.price});
-       END LOOP;
-    END
-    $do$;
-    `;
+    
+    req.sqlQuery = `INSERT INTO prices (orig_code, dest_code, day, price)
+                    SELECT '${req.body.origin_code}' ,'${req.body.destination_code}', numberOfDays, '${req.body.price}'
+                    FROM generate_series('${req.body.date_from}'::date, '${req.body.date_to}','1 days') AS numberOfDays;`;
+     
+
     return next();
   },
   queryHandler
