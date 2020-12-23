@@ -1,34 +1,66 @@
-# EQworks test |Javascript | React JS | Rate limiter | Highcharts
-> A project demonstrating Full stack data visualization using Node.js | Express.Js | React. JS | Highcharts.js
+# Xeneta's Rate API task | Express JS | Postgress SQL | Javascript | Currency convert
+> A project demonstrating Xeneta's Rate API tasks
 
 > Click :star:if you like it. Check me [@Bidyashish](https://www.bidyashish.com).
 
-Test requirements: https://gist.github.com/woozyking/126fdf4c72fdf65a3504e5681a1ce715
 
 ---
 
 ### Getting Started 
 
-In order to the following example 
- Test live
+First Clone the project
+```bash
+git clone https://github.com/bidyashish/Xeneta.git
+```
 
- Backend: Demo at: https://sheltered-mesa-51060.herokuapp.com
+Checkout to master branch 
+```bash
+git checkout master
+```
+create and populate the `.env` using `.env.example` file
 
- Frontend: Demo at: https://jolly-yalow-18c1a4.netlify.app
+Add Database credentials and `opencurrency` API key values
+```
+PGHOST=localhost
+PGDATABASE=xeneta	 
+PGUSER=ashish	 
+PGPASSWORD=yournewpass
+PGPORT=5432
+```
 
- Rate Limit API is at 100 Request in 15 seconds per IP address
+Require NODE 10.X + version | check node is installed or get latest NODE at https://nodejs.org/en/download/
+```bash
+node -v && npm -v
+```
+
+To run Application in development mode
+```bash
+npm run dev
+```
+
+To run Application in production mode
+```bash
+npm start
+```
+
+Application will be listening on 
+```
+localhost:5555
+```
 
 ---
-> Express JS application using postgress Database and Rate limiter
-> create `.env` file nad add 
+> Task 1 | API endpoint that returns a list with the average prices for each day on a route between Port Codes origin and destination.
+
+Return : JSON object
 
 ```
-PGHOST={your DB link ....rds.amazonaws.com}
-PGPORT=5432	 
-PGDATABASE=work_samples	 
-PGUSER=readonly	 
-PGPASSWORD={your password}
+curl "http://localhost:5555/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
+
 ```
+
+check [Image 1](/screeshots/1.png).
+
+![alt text](https://github.com/bidyashish/EQworks_Test/blob/master/screeshots/im1.png?raw=true)
 
 check [Back End](/backEnd).
 ```
