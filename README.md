@@ -3,6 +3,8 @@
 
 > Click :star:if you like it. Check me [@Bidyashish](https://www.bidyashish.com).
 
+> Checkout demo at https://xeneta-bidyashish.herokuapp.com/
+
 
 ---
 
@@ -57,7 +59,7 @@ localhost:5555
 Return : JSON object
 
 ```
-curl "http://localhost:5555/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
+curl "https://xeneta-bidyashish.herokuapp.com/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main
 
 ```
 
@@ -70,7 +72,7 @@ curl "http://localhost:5555/rates?date_from=2016-01-01&date_to=2016-01-10&origin
 Return : JSON object
 
 ```
-curl "http://localhost:5555/rates_null?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
+curl "https://xeneta-bidyashish.herokuapp.com/rates_null?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main
 
 ```
 
@@ -97,7 +99,7 @@ case 2  Date ranging from certain date_from to date_to. Date is inserted in incr
  curl --header "Content-Type: application/json" \
       --request POST \
       --data '{"date_from":"2016-10-01","date_to":"2016-11-02","origin_code": "CNSGH","destination_code":"CNSGH","price":"99443"}' \
-      http://localhost:5555/post_price
+      https://xeneta-bidyashish.herokuapp.com/post_price
 
 ```
 

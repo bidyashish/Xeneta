@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send(
-    `Welcome to ${process.env.PGHOST} Xeneta API test by Bidyashish Kumar more info at <a href="http://bidyashish.com" target="_blank"> bidyashish.com </a> </br>😎
+    `Welcome to Xeneta API test by Bidyashish Kumar more info at <a href="http://bidyashish.com" target="_blank"> bidyashish.com </a> </br>😎
      Documentation at <a href="https://github.com/bidyashish/Xeneta" target="_blank">https://github.com/bidyashish/Xeneta</a>
     `
   );
