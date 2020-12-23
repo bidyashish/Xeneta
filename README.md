@@ -59,7 +59,7 @@ localhost:5555
 Return : JSON object
 
 ```
-curl "https://xeneta-bidyashish.herokuapp.com/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main
+curl "https://xeneta-bidyashish.herokuapp.com/rates?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
 
 ```
 
@@ -72,7 +72,7 @@ curl "https://xeneta-bidyashish.herokuapp.com/rates?date_from=2016-01-01&date_to
 Return : JSON object
 
 ```
-curl "https://xeneta-bidyashish.herokuapp.com/rates_null?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main
+curl "https://xeneta-bidyashish.herokuapp.com/rates_null?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
 
 ```
 
