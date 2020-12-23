@@ -1,4 +1,5 @@
 const pg = require("pg");
+require("dotenv").config();
 
 const pool = new pg.Pool({
   host: process.env.PGHOST,
