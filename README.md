@@ -62,7 +62,7 @@ curl "http://localhost:5555/rates?date_from=2016-01-01&date_to=2016-01-10&origin
 
 check [Image 1](/screeshots/1.png).
 
-![alt text](https://github.com/bidyashish/bidyashish/Xeneta/blob/master/screenshots/1.png?raw=true)
+![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/1.png?raw=true)
 
 #### Part 2
 > Task | API endpoint that returns a list with the average prices for each day on a route between Port Codes origin and destination.
@@ -77,7 +77,7 @@ curl "http://localhost:5555/rates_null?date_from=2016-01-01&date_to=2016-01-10&o
 
 check [Image 1](/screeshots/2.png).
 
-![alt text](https://github.com/bidyashish/bidyashish/Xeneta/blob/master/screenshots/2.png?raw=true)
+![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/2.png?raw=true)
 
 check [Back End](/backEnd).
 ```
