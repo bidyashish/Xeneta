@@ -49,7 +49,9 @@ localhost:5555
 ```
 
 ---
-> Task 1 | API endpoint that returns a list with the average prices for each day on a route between Port Codes origin and destination.
+#### Part 1
+> Task | API endpoint that returns a list with the average prices for each day on a route between Port Codes origin and destination.
+> solution | Query SQL based on given valid input
 
 Return : JSON object
 
@@ -60,7 +62,22 @@ curl "http://localhost:5555/rates?date_from=2016-01-01&date_to=2016-01-10&origin
 
 check [Image 1](/screeshots/1.png).
 
-![alt text](https://github.com/bidyashish/EQworks_Test/blob/master/screeshots/im1.png?raw=true)
+![alt text](https://github.com/bidyashish/bidyashish/Xeneta/blob/master/screenshots/1.png?raw=true)
+
+#### Part 2
+> Task | API endpoint that returns a list with the average prices for each day on a route between Port Codes origin and destination.
+> solution | Query SQL based on given valid input
+
+Return : JSON object
+
+```
+curl "http://localhost:5555/rates_null?date_from=2016-01-01&date_to=2016-01-10&origin=CNSGH&destination=north_europe_main"
+
+```
+
+check [Image 1](/screeshots/2.png).
+
+![alt text](https://github.com/bidyashish/bidyashish/Xeneta/blob/master/screenshots/2.png?raw=true)
 
 check [Back End](/backEnd).
 ```
