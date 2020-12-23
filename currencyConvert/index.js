@@ -15,7 +15,7 @@ module.exports = function currency() {
         let rate = jsonData.rates[tempCur];
 
         tempPrice = parseInt(tempPrice);
-        tempPrice = rate * tempPrice;
+        tempPrice =   tempPrice / rate;
         Math.floor(tempPrice);
 
         tempPrice = String(tempPrice);
