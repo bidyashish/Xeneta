@@ -4,7 +4,7 @@
   "description": "A project utilising Express JS & Postgress SQL for Rates store and convert",
   "main": "index.js",
   "scripts": {
-    "start": " source .env; node index.js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   "homepage": "https://github.com/bidyashish/Xeneta#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.5.1"
   },

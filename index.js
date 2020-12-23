@@ -1,22 +1,29 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-
 const validateParameters = require("./validation/validateParameters");
 const validateQueryStrings = require("./validation/validateQueryStrings");
+const checkCurrency = require("./currencyConvert/index");
+const queryHandler = require("./db/index");
 
-const checkCurrency = require("./validation/currency");
-const queryHandler = require("./db/index")
-
+require("dotenv").config();
 const app = express();
-app.use(bodyParser.json());
 
+// Configuring body parser middleware
+app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
   res.send(
-    "Welcome to Xeneta API test by Bidyashish Kumar more info at http://bidyashish.com 😎"
+    `Welcome to ${process.env.PGHOST} Xeneta API test by Bidyashish Kumar more info at <a href="http://bidyashish.com" target="_blank"> bidyashish.com </a> </br>😎
+     Documentation at <a href="https://github.com/bidyashish/Xeneta" target="_blank">https://github.com/bidyashish/Xeneta</a>
+    `
   );
 });
 
+/* 
+   Method GET /rates
+   Required : Query string "date_from", "date_to", "origin", "destination"
+   Return : JSON object containing Average rates as per input Query String
+*/
 app.get(
   "/rates",
   validateQueryStrings(["date_from", "date_to", "origin", "destination"]),
@@ -34,6 +41,11 @@ app.get(
   queryHandler
 );
 
+/* 
+   Method GET /rates_null
+   Required : Query string "date_from", "date_to", "origin", "destination"
+   Return : JSON object containing Average rates greater than 3 days as per input Query String
+*/
 app.get(
   "/rates_null",
   validateQueryStrings(["date_from", "date_to", "origin", "destination"]),
@@ -53,6 +65,12 @@ app.get(
   queryHandler
 );
 
+/* 
+   Method : POST /post_price
+   Required : Parameters "date_from", "date_to", "origin", "destination" | Optional "currency"
+   Return : JSON object containing Average rates greater than 3 days as per input Query String
+*/
+
 app.post(
   "/post_price",
   validateParameters([
@@ -65,11 +83,9 @@ app.post(
   checkCurrency(),
 
   (req, res, next) => {
-    
     req.sqlQuery = `INSERT INTO prices (orig_code, dest_code, day, price)
                     SELECT '${req.body.origin_code}' ,'${req.body.destination_code}', numberOfDays, '${req.body.price}'
                     FROM generate_series('${req.body.date_from}'::date, '${req.body.date_to}','1 days') AS numberOfDays;`;
-     
 
     return next();
   },
@@ -85,7 +101,6 @@ app.listen(process.env.PORT || 5555, (err) => {
   }
 });
 
-// last resorts
 process.on("uncaughtException", (err) => {
   console.log(`Caught exception: ${err}`);
   process.exit(1);
