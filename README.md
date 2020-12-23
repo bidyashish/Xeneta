@@ -101,8 +101,50 @@ case 2  Date ranging from certain date_from to date_to. Date is inserted in incr
 
 ```
 
+![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/3.png?raw=true)
 
-![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/2.png?raw=true)
+#### Part 2
+> Extend the upload API to Support Currency format and Automatic rates conversion:
+
+* date_from
+* date_to
+* origin_code,
+* destination_code
+* price (default USD currency)
+* currency (optional)
+
+> solution used to implemeted this feature
+
+1. If no currency parameter is provided, default currency is USD
+2. Parse the valid currency code to get comparable rates to USD 
+3. Update the price based in the current rate.
+4. Perform the save data operation in Prices table in PostGress
+
+###### Rates conversion
+Rates conversion is happening in Real time using openexchange rates https://openexchangerates.org/ 
+
+```
+const url = `https://openexchangerates.org/api/latest.json?app_id=${process.env.OPEN_EXCHANGE_KEY}`;
+```
+
+
+
+
+
+
+List of Currency Supported [@Currency List](https://github.com/bidyashish/Xeneta/blob/master/currencyConvert/currencyList.js).
+
+
+```
+ curl --header "Content-Type: application/json" \
+      --request POST \
+      --data '{"date_from":"2016-10-01","date_to":"2016-11-02","origin_code": "CNSGH","destination_code":"CNSGH","price":"99443" "currency":"AED"}' \
+      http://localhost:5555/post_price
+
+```
+
+
+![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/4.png?raw=true)
 
 
 
