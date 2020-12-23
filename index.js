@@ -84,7 +84,7 @@ app.post(
 
   (req, res, next) => {
     req.sqlQuery = `INSERT INTO prices (orig_code, dest_code, day, price)
-                    SELECT '${req.body.origin_code}' ,'${req.body.destination_code}', numberOfDays, '${req.body.price}'
+                    SELECT '${req.body.origin_code}' ,'${req.body.destination_code}', numberOfDays, '${req.body.price}'::numeric::integer
                     FROM generate_series('${req.body.date_from}'::date, '${req.body.date_to}','1 days') AS numberOfDays;`;
 
     return next();
