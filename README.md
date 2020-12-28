@@ -148,7 +148,20 @@ List of Currency Supported [@Currency List](https://github.com/bidyashish/Xeneta
 
 ![alt text](https://github.com/bidyashish/Xeneta/blob/currency-convert/screenshots/4.png?raw=true)
 
+### Task 2 | Batch processing
 
+To receive and update batches of tens of thousands of new prices of similar format. I will use the proven method of asynchronous processing of data.
+
+1. Firstly I will store all the incoming messages in SQS service; Asynchronous queue message handling, I will use Amazon AWS SQS service as it provide the ability process messages in batches.
+
+2. For inserting batches of prices data,I will create and use use Lambda based serverless Express JS application to handle batches. As SQS is FIFO based opearation it will help to store data asynchronous without affecting performance and ensure reliability of data to not getting lost in coming data.
+
+3. Factors affecting this micro-servicce application will be number of incoming data, If so then I need to scale horizontally or use AUto scale feature.
+
+4. As this will provide robust method to store data in Postgress RDBMS. 
+
+5. Database write operation is also a factor that might become bottleneck.
+As number of database transaction per minute will be limites
 
 ---
 Bidyashish Kumar [@Bidyashish](https://www.bidyashish.com).
